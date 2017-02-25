@@ -26,3 +26,12 @@ script:
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
+
+  # Source nvm
+  - . ~/.profile
+
+  # Check nvm version
+  - nvm --version | grep 0.31.5
+
+  # Check Node.js version
+  - node --version | grep 6.9.1
