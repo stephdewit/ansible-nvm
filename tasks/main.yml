@@ -26,7 +26,7 @@
   shell: . ~/.profile && nvm install {{ nvm.node_version }}
   become: "{{ nvm.user }}"
   register: nvm_install_result
-  changed_when: "'is already installed.' not in nvm_install_result.stdout"
+  changed_when: "'is already installed.' not in nvm_install_result.stderr"
   tags: nvm
 
 - name: Check if {{ nvm.node_version }} is the default node version
