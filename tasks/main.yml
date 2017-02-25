@@ -23,7 +23,7 @@
   tags: nvm
 
 - name: Install {{ nvm.node_version }}
-  shell: source ~/.profile && nvm install {{ nvm.node_version }}
+  shell: . ~/.profile && nvm install {{ nvm.node_version }}
   args:
     executable: /bin/bash
   become: "{{ nvm.user }}"
@@ -32,7 +32,7 @@
   tags: nvm
 
 - name: Check if {{ nvm.node_version }} is the default node version
-  shell: source ~/.profile && nvm ls | grep -e 'default -> {{ nvm.node_version }}'
+  shell: . ~/.profile && nvm ls | grep -e 'default -> {{ nvm.node_version }}'
   args:
     executable: /bin/bash
   become: "{{ nvm.user }}"
@@ -42,7 +42,7 @@
   tags: nvm
 
 - name: Set default node version to {{ nvm.node_version }}
-  shell: source ~/.profile && nvm alias default {{ nvm.node_version }}
+  shell: . ~/.profile && nvm alias default {{ nvm.node_version }}
   args:
     executable: /bin/bash
   become: "{{ nvm.user }}"
