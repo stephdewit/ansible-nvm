@@ -30,7 +30,7 @@
   tags: nvm
 
 - name: Check if {{ nvm.node_version }} is the default node version
-  shell: . ~/.profile && nvm ls | grep -e 'default -> {{ nvm.node_version }}'
+  shell: . ~/.profile && nvm ls --no-colors | grep -e 'default -> {{ nvm.node_version }}'
   become: "{{ nvm.user }}"
   register: nvm_check_default
   changed_when: False
