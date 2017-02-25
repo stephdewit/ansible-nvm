@@ -10,6 +10,9 @@ notifications:
 install:
   - pip install ansible
 
+before_script:
+  - rm -rf ~/.nvm # This folder already exists on Travis. :-( I need to make this path configurable.
+
 script:
   # Check syntax
   - ansible-playbook -i "localhost," test.yml --syntax-check
