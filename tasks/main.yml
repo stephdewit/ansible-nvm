@@ -24,8 +24,6 @@
 
 - name: Install {{ nvm.node_version }}
   shell: . ~/.profile && nvm install {{ nvm.node_version }}
-  args:
-    executable: /bin/bash
   become: "{{ nvm.user }}"
   register: nvm_install_result
   changed_when: "'is already installed.' not in nvm_install_result.stdout"
@@ -33,8 +31,6 @@
 
 - name: Check if {{ nvm.node_version }} is the default node version
   shell: . ~/.profile && nvm ls | grep -e 'default -> {{ nvm.node_version }}'
-  args:
-    executable: /bin/bash
   become: "{{ nvm.user }}"
   register: nvm_check_default
   changed_when: False
@@ -43,8 +39,6 @@
 
 - name: Set default node version to {{ nvm.node_version }}
   shell: . ~/.profile && nvm alias default {{ nvm.node_version }}
-  args:
-    executable: /bin/bash
   become: "{{ nvm.user }}"
   when: nvm_check_default.rc != 0
   tags: nvm
