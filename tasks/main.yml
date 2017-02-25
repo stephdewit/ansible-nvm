@@ -10,7 +10,10 @@
   tags: nvm
 
 - name: Install nvm
-  git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version={{ nvm_version }}
+  git:
+    repo=https://github.com/creationix/nvm.git
+    dest=~/.nvm
+    version={{ nvm_version }}
   tags: nvm
 
 - name: Source nvm in ~/.profile
