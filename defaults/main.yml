@@ -1,5 +1,4 @@
 ---
 nvm:
-  user: '{{ ansible_user_id }}'
   version: v0.30.2
   node_version: '0.12'

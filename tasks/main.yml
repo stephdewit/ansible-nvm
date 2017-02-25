@@ -10,12 +10,10 @@
   tags: nvm
 
 - name: Install nvm
-  become: "{{ nvm.user }}"
   git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version={{ nvm.version }}
   tags: nvm
 
 - name: Source nvm in ~/.profile
-  become: "{{ nvm.user }}"
   lineinfile: >
     dest=~/.profile
     line=". ~/.nvm/nvm.sh"
@@ -24,14 +22,12 @@
 
 - name: Install {{ nvm.node_version }}
   shell: . ~/.profile && nvm install {{ nvm.node_version }}
-  become: "{{ nvm.user }}"
   register: nvm_install_result
   changed_when: "'is already installed.' not in nvm_install_result.stderr"
   tags: nvm
 
 - name: Check if {{ nvm.node_version }} is the default node version
   shell: . ~/.profile && nvm ls --no-colors | grep -e 'default -> {{ nvm.node_version }}'
-  become: "{{ nvm.user }}"
   register: nvm_check_default
   changed_when: False
   failed_when: False
@@ -39,6 +35,5 @@
 
 - name: Set default node version to {{ nvm.node_version }}
   shell: . ~/.profile && nvm alias default {{ nvm.node_version }}
-  become: "{{ nvm.user }}"
   when: nvm_check_default.rc != 0
   tags: nvm
