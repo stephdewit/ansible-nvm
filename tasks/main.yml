@@ -13,7 +13,7 @@
   git:
     repo=https://github.com/creationix/nvm.git
     dest=~/.nvm
-    version={{ nvm_version }}
+    version={% if nvm_version!='HEAD' %}v{% endif %}{{ nvm_version }}
   tags: nvm
 
 - name: Source nvm in ~/.profile
