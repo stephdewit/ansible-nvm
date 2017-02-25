@@ -1,7 +1,6 @@
 ---
 - name: Test playbook for nvm role
   hosts: all
-  sudo: True
 
   roles:
     - role: ansible-nvm
