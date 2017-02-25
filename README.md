@@ -25,7 +25,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-        - role: nvm
+        - role: stephdewit.nvm
           nvm:
             user: deploy
             version: v0.4.0
