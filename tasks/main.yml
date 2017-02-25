@@ -38,7 +38,7 @@
   become: "{{ nvm.user }}"
   register: nvm_check_default
   changed_when: False
-  ignore_errors: True
+  failed_when: False
   tags: nvm
 
 - name: Set default node version to {{ nvm.node_version }}
@@ -46,5 +46,5 @@
   args:
     executable: /bin/bash
   become: "{{ nvm.user }}"
-  when: nvm_check_default|failed
+  when: nvm_check_default.rc != 0
   tags: nvm
