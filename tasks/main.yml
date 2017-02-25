@@ -9,7 +9,7 @@
   become: true
   tags: nvm
 
-- name: Install nvm
+- name: Install nvm {{ nvm_version }}
   git:
     repo=https://github.com/creationix/nvm.git
     dest=~/.nvm
@@ -23,20 +23,20 @@
     create=yes
   tags: nvm
 
-- name: Install {{ nvm_node_version }}
+- name: Install Node.js {{ nvm_node_version }}
   shell: . ~/.profile && nvm install {{ nvm_node_version }}
   register: nvm_install_result
   changed_when: "'is already installed.' not in nvm_install_result.stderr"
   tags: nvm
 
-- name: Check if {{ nvm_node_version }} is the default node version
+- name: Check if {{ nvm_node_version }} is the default Node.js version
   shell: . ~/.profile && nvm ls --no-colors | grep -e 'default -> {{ nvm_node_version }}'
   register: nvm_check_default
   changed_when: False
   failed_when: False
   tags: nvm
 
-- name: Set default node version to {{ nvm_node_version }}
+- name: Set default Node.js version to {{ nvm_node_version }}
   shell: . ~/.profile && nvm alias default {{ nvm_node_version }}
   when: nvm_check_default.rc != 0
   tags: nvm
