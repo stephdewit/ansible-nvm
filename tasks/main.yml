@@ -10,7 +10,7 @@
   tags: nvm
 
 - name: Install nvm
-  git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version={{ nvm.version }}
+  git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version={{ nvm_version }}
   tags: nvm
 
 - name: Source nvm in ~/.profile
@@ -20,20 +20,20 @@
     create=yes
   tags: nvm
 
-- name: Install {{ nvm.node_version }}
-  shell: . ~/.profile && nvm install {{ nvm.node_version }}
+- name: Install {{ nvm_node_version }}
+  shell: . ~/.profile && nvm install {{ nvm_node_version }}
   register: nvm_install_result
   changed_when: "'is already installed.' not in nvm_install_result.stderr"
   tags: nvm
 
-- name: Check if {{ nvm.node_version }} is the default node version
-  shell: . ~/.profile && nvm ls --no-colors | grep -e 'default -> {{ nvm.node_version }}'
+- name: Check if {{ nvm_node_version }} is the default node version
+  shell: . ~/.profile && nvm ls --no-colors | grep -e 'default -> {{ nvm_node_version }}'
   register: nvm_check_default
   changed_when: False
   failed_when: False
   tags: nvm
 
-- name: Set default node version to {{ nvm.node_version }}
-  shell: . ~/.profile && nvm alias default {{ nvm.node_version }}
+- name: Set default node version to {{ nvm_node_version }}
+  shell: . ~/.profile && nvm alias default {{ nvm_node_version }}
   when: nvm_check_default.rc != 0
   tags: nvm

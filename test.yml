@@ -5,6 +5,5 @@
 
   roles:
     - role: ansible-nvm
-      nvm:
-        version: v0.4.0
-        node_version: '0.10'
+      nvm_version: v0.4.0
+      nvm_node_version: 0.10
