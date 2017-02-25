@@ -14,3 +14,10 @@ script:
 
   # First run
   - ansible-playbook -i "localhost," -c local test.yml
+
+  # Second run
+  - >
+    ansible-playbook -i "localhost," -c local test.yml
+    | grep -q 'changed=0.*failed=0'
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)
