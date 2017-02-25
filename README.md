@@ -11,8 +11,8 @@ git, curl, build-essential, libssl-dev. Requirements are installed by the role.
 Role Variables
 --------------
 
-* `nvm_version` nvm version tag, or `HEAD`. Defaults to `v0.30.2`
-* `nvm_node_version` Node.js version. Defaults to `0.12`
+* `nvm_version` nvm version tag, or `HEAD`. Defaults to `v0.33.1`
+* `nvm_node_version` Node.js version. Defaults to `6.10.0`
 
 Dependencies
 ------------
