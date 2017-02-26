@@ -12,14 +12,14 @@
 - name: Install nvm {{ nvm_version }}
   git:
     repo=https://github.com/creationix/nvm.git
-    dest=~/.nvm
+    dest={{ nvm_install_path }}
     version={% if nvm_version!='HEAD' %}v{% endif %}{{ nvm_version }}
   tags: nvm
 
 - name: Source nvm in ~/.profile
   lineinfile: >
     dest=~/.profile
-    line=". ~/.nvm/nvm.sh"
+    line=". {{ nvm_install_path }}/nvm.sh"
     create=yes
   tags: nvm
 
