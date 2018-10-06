@@ -1,5 +1,5 @@
 nvm
-========
+===
 
 Install nvm and Node.js.
 
@@ -21,7 +21,7 @@ Dependencies
 No dependencies.
 
 Example Playbook
--------------------------
+----------------
 
     - hosts: servers
       roles:
