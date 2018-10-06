@@ -12,9 +12,21 @@ galaxy_info:
       - quantal
       - raring
       - saucy
+      - trusty
+      - utopic
+      - vivid
+      - wily
+      - xenial
+      - yakkety
+      - zesty
+      - artful
+      - bionic
+      - cuttlefish
   - name: Debian
     versions:
       - wheezy
+      - jessie
+      - stretch
   galaxy_tags:
     - nodejs
     - node
