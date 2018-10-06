@@ -18,7 +18,7 @@ Role Variables
 Dependencies
 ------------
 
-No depedencies.
+No dependencies.
 
 Example Playbook
 -------------------------
