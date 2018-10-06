@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Stéphane de Wit
+  author: Stephane de Wit
   description: Install nvm and Node.js.
   company: stephanedewit.be
   license: BSD
