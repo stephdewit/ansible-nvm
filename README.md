@@ -12,7 +12,7 @@ Role Variables
 --------------
 
 * `nvm_version` nvm version tag, or `HEAD`. Defaults to `0.33.11`
-* `nvm_node_version` Node.js version. Defaults to `8.9.1`
+* `nvm_node_version` Node.js version. Defaults to `8.12.0`
 * `nvm_install_path` nvm folder path. Defaults to `~/.nvm`
 
 Dependencies
