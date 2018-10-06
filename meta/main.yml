@@ -16,8 +16,10 @@ galaxy_info:
     versions:
       - wheezy
   galaxy_tags:
-    - development
-    - packaging
-    - web
+    - nodejs
+    - node
+    - npm
+    - npx
+    - nvm
 
 dependencies: []
