@@ -37,4 +37,5 @@ BSD
 Author Information
 ------------------
 
-Jarno Keskikangas
+- Jarno Keskikangas
+- [Stéphane de Wit](https://www.stephanedewit.be)
