@@ -1,14 +1,9 @@
 ---
 - name: Install dependencies
   apt:
-    pkg: "{{ item }}"
+    pkg: ["git", "curl", "build-essential", "libssl-dev"]
     update_cache: yes
     cache_valid_time: 3600
-  with_items:
-    - git
-    - curl
-    - build-essential
-    - libssl-dev
   become: true
   tags: nvm
 
