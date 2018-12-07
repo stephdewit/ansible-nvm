@@ -1,4 +1,4 @@
 ---
 nvm_version: 0.33.11
-nvm_node_version: 10.13.0
+nvm_node_version: 10.14.1
 nvm_install_path: ~/.nvm
