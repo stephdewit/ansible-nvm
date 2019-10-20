@@ -1,0 +1,15 @@
+---
+- name: Install dependencies
+  become: true
+  become_user: root
+  tags: nvm
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - git
+    - curl
+    - build-essential
+    - libssl-dev
