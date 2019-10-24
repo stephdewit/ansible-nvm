@@ -1,11 +1,9 @@
 ---
-- name: Install dependencies
-  apt:
-    pkg: ["git", "curl", "build-essential", "libssl-dev"]
-    update_cache: yes
-    cache_valid_time: 3600
-  become: true
-  tags: nvm
+- include: setup-redhat.yml
+  when: ansible_os_family == "RedHat"
+
+- include: setup-debian.yml
+  when: ansible_os_family == "Debian"
 
 - name: Install nvm {{ nvm_version }}
   git:
