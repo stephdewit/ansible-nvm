@@ -12,7 +12,7 @@
     version: "{% if nvm_version!='HEAD' %}v{% endif %}{{ nvm_version }}"
   tags: nvm
 
-- name: Update nvm_shell_init_file to source nvm
+- name: Update {{ nvm_shell_init_file }} to source nvm
   lineinfile:
     dest: "{{ nvm_shell_init_file }}"
     line: . {{ nvm_install_path }}/nvm.sh
