@@ -29,7 +29,6 @@ Example Playbook
         - role: stephdewit.nvm
           nvm_version: 0.4.0
           nvm_node_version: 0.10
-          nvm_shell_init_file: ~/.bashrc
 
 License
 -------
