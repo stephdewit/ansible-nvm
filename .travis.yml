@@ -1,6 +1,7 @@
 ---
 language: python
 python: "3.6"
+os: linux
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
