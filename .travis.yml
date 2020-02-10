@@ -8,6 +8,12 @@ notifications:
 install:
   - pip install ansible
 
+before_script:
+  # Remove already installed nvm
+  - nvm deactivate
+  - nvm unload
+  - rm -fr ~/.nvm
+
 script:
   # Check syntax
   - ansible-playbook -i "localhost," test.yml --syntax-check
