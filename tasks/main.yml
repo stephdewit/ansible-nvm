@@ -26,7 +26,12 @@
   tags: nvm
 
 - name: Check if {{ nvm_node_version }} is the default Node.js version
-  shell: . {{ nvm_shell_init_file }} && nvm ls --no-colors | grep -e 'default -> {{ nvm_node_version }}'
+  shell: >
+    set -o pipefail && \
+    . {{ nvm_shell_init_file }} && \
+    nvm ls --no-colors | grep -e 'default -> {{ nvm_node_version }}'
+  args:
+    executable: /bin/bash
   register: nvm_check_default
   changed_when: False
   failed_when: False
