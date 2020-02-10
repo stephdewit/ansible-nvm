@@ -20,19 +20,19 @@
   tags: nvm
 
 - name: Install Node.js {{ nvm_node_version }}
-  shell: NVM_DIR={{ nvm_install_path }} . {{ nvm_shell_init_file }} && nvm install {{ nvm_node_version }}
+  shell: . {{ nvm_shell_init_file }} && nvm install {{ nvm_node_version }}
   register: nvm_install_result
   changed_when: "'is already installed.' not in nvm_install_result.stderr"
   tags: nvm
 
 - name: Check if {{ nvm_node_version }} is the default Node.js version
-  shell: NVM_DIR={{ nvm_install_path }} . {{ nvm_shell_init_file }} && nvm ls --no-colors | grep -e 'default -> {{ nvm_node_version }}'
+  shell: . {{ nvm_shell_init_file }} && nvm ls --no-colors | grep -e 'default -> {{ nvm_node_version }}'
   register: nvm_check_default
   changed_when: False
   failed_when: False
   tags: nvm
 
 - name: Set default Node.js version to {{ nvm_node_version }}
-  shell: NVM_DIR={{ nvm_install_path }} . {{ nvm_shell_init_file }} && nvm alias default {{ nvm_node_version }}
+  shell: . {{ nvm_shell_init_file }} && nvm alias default {{ nvm_node_version }}
   when: nvm_check_default.rc != 0
   tags: nvm
