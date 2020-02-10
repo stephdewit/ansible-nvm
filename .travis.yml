@@ -13,7 +13,7 @@ before_script:
   # Remove already installed nvm
   - nvm deactivate
   - nvm unload
-  - rm -fr ~/.nvm
+  - rm -rf ~/.nvm
 
 script:
   # Check syntax
