@@ -7,7 +7,7 @@ notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
 
 install:
-  - pip install ansible
+  - pip install ansible ansible-lint
 
 before_script:
   # Remove already installed nvm
@@ -18,6 +18,7 @@ before_script:
 script:
   # Check syntax
   - ansible-playbook -i "localhost," test.yml --syntax-check
+  - ansible-lint .
 
   # First run
   - ansible-playbook -i "localhost," -c local test.yml --extra-vars "ansible_python_interpreter=auto nvm_install_path=~/.nvmbis"
