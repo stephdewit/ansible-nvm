@@ -20,11 +20,11 @@ script:
   - ansible-playbook -i "localhost," test.yml --syntax-check
 
   # First run
-  - ansible-playbook -i "localhost," -c local test.yml --extra-vars "nvm_install_path=~/.nvmbis"
+  - ansible-playbook -i "localhost," -c local test.yml --extra-vars "ansible_python_interpreter=auto nvm_install_path=~/.nvmbis"
 
   # Second run
   - >
-    ansible-playbook -i "localhost," -c local test.yml --extra-vars "nvm_install_path=~/.nvmbis"
+    ansible-playbook -i "localhost," -c local test.yml --extra-vars "ansible_python_interpreter=auto nvm_install_path=~/.nvmbis"
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
