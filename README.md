@@ -35,8 +35,6 @@ When run with another user than the logged one, it may help to set `NVM_DIR` env
     - hosts: servers
       roles:
         - role: stephdewit.nvm
-          nvm_version: 0.4.0
-          nvm_node_version: 0.10
           become: yes
           become_user: vagrant
           environment:
