@@ -2,7 +2,6 @@
 - name: Install dependencies
   become: true
   become_user: root
-  tags: nvm
   yum:
     name: "{{ packages }}"
   vars:

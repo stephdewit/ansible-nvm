@@ -1,43 +1,17 @@
 ---
 - include: setup-redhat.yml
   when: ansible_os_family == "RedHat"
+  tags: nvm
 
 - include: setup-debian.yml
   when: ansible_os_family == "Debian"
-
-- name: Install nvm {{ nvm_version }}
-  git:
-    repo: https://github.com/creationix/nvm.git
-    dest: "{{ nvm_install_path }}"
-    version: "{% if nvm_version!='HEAD' %}v{% endif %}{{ nvm_version }}"
   tags: nvm
 
-- name: Update {{ nvm_shell_init_file }} to source nvm
-  lineinfile:
-    dest: "{{ nvm_shell_init_file }}"
-    line: . {{ nvm_install_path }}/nvm.sh
-    create: yes
+- include: install_nvm.yml
   tags: nvm
 
-- name: Install Node.js {{ nvm_node_version }}
-  shell: . {{ nvm_shell_init_file }} && nvm install {{ nvm_node_version }}
-  register: nvm_install_result
-  changed_when: "'is already installed.' not in nvm_install_result.stderr"
+- include: install_nodejs.yml
   tags: nvm
 
-- name: Check if {{ nvm_node_version }} is the default Node.js version
-  shell: >
-    set -o pipefail && \
-    . {{ nvm_shell_init_file }} && \
-    nvm ls --no-colors | grep -e 'default -> {{ nvm_node_version }}'
-  args:
-    executable: /bin/bash
-  register: nvm_check_default
-  changed_when: False
-  failed_when: False
-  tags: nvm
-
-- name: Set default Node.js version to {{ nvm_node_version }}
-  shell: . {{ nvm_shell_init_file }} && nvm alias default {{ nvm_node_version }}
-  when: nvm_check_default.rc != 0
+- include: validate.yml
   tags: nvm

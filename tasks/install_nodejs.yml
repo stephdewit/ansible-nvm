@@ -1,0 +1,24 @@
+---
+- name: Install Node.js lts
+  shell: ". ./nvm.sh && nvm install --lts"
+  args:
+    chdir: "{{ nvm_install_path }}"
+  register: nvm_install_result
+  changed_when: "'is already installed.' not in nvm_install_result.stderr"
+  when: nvm_node_version == 'lts'
+
+- name: Install Node.js latest
+  shell: ". ./nvm.sh && nvm install node"
+  args:
+    chdir: "{{ nvm_install_path }}"
+  register: nvm_install_result
+  changed_when: "'is already installed.' not in nvm_install_result.stderr"
+  when: nvm_node_version == 'latest'
+
+- name: Install Node.js {{ nvm_node_version }}
+  shell: ". ./nvm.sh && nvm install {{ nvm_node_version }}"
+  args:
+    chdir: "{{ nvm_install_path }}"
+  register: nvm_install_result
+  changed_when: "'is already installed.' not in nvm_install_result.stderr"
+  when: nvm_node_version != 'latest' and nvm_node_version != 'lts'

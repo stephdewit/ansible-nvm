@@ -1,0 +1,23 @@
+---
+- name: Install nvm {{ nvm_version }}
+  git:
+    repo: https://github.com/creationix/nvm.git
+    dest: "{{ nvm_install_path }}"
+    version: "v{{ nvm_version }}"
+    force: "{{ nvm_force_install|bool }}"
+  when: nvm_version | regex_search('\\d.')
+
+- name: Install nvm latest
+  git:
+    repo: https://github.com/creationix/nvm.git
+    dest: "{{ nvm_install_path }}"
+    version: "{% if nvm_version=='latest' %}master{% else %}{{ nvm_version }}{% endif %}"
+    force: "{{ nvm_force_install|bool }}"
+  when: nvm_version | regex_search('master|HEAD|latest')
+
+- name: Update {{ nvm_shell_init_file }} to source nvm
+  blockinfile:
+    path: "{{ nvm_shell_init_file }}"
+    marker: "# NVM path management from ansible {mark}"
+    block: |
+      . {{ nvm_install_path }}/nvm.sh
