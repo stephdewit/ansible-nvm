@@ -12,7 +12,7 @@
   failed_when: False
 
 - name: Set default Node.js version to {{ nvm_node_version }}
-  shell: ". ./nvm.sh && nvm alias default {{ nvm_node_version }}"
+  shell: ". ./nvm.sh && nvm alias default {% if nvm_node_version == 'lts' %} lts {% else %}{{ nvm_node_version }}{% endif %}"
   args:
     chdir: "{{ nvm_install_path }}"
   when: nvm_check_default.rc != 0
