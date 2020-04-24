@@ -1,6 +1,8 @@
 nvm
 ===
 
+[![Build Status](https://travis-ci.org/stephdewit/ansible-nvm.svg?branch=master)](https://travis-ci.org/stephdewit/ansible-nvm)
+
 Install nvm and Node.js.
 
 Requirements
@@ -36,8 +38,8 @@ Install latest version always
     - hosts: servers
       roles:
         - role: stephdewit.nvm
-          nvm_version: 'latest'
-          nvm_node_version: 'latest'
+          nvm_version: latest
+          nvm_node_version: latest
 
 When run with another user than the logged one, it may help to set `NVM_DIR` environment variable to an absolute path:
 
@@ -58,4 +60,4 @@ Author Information
 ------------------
 
 - Jarno Keskikangas
-- [Stéphane de Wit](https://www.stephanedewit.be)
+- [StÃ©phane de Wit](https://www.stephanedewit.be)

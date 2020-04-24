@@ -1,0 +1,7 @@
+---
+- name: Current version
+  hosts: all
+  roles:
+    - role: ansible-nvm
+      nvm_version: 0.35.3
+      nvm_node_version: 12.16.1

@@ -12,6 +12,3 @@
 
 - include: install_nodejs.yml
   tags: nvm
-
-- include: validate.yml
-  tags: nvm

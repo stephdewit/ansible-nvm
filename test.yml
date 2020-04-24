@@ -6,3 +6,5 @@
     - role: ansible-nvm
       nvm_version: 0.31.5
       nvm_node_version: 6.9.1
+
+# 6/10/12/14/LATEST/LTS

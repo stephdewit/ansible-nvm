@@ -10,3 +10,4 @@
     - git
     - curl
     - openssl-devel
+    - findutils

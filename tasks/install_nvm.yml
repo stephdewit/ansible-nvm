@@ -3,19 +3,14 @@
   git:
     repo: https://github.com/creationix/nvm.git
     dest: "{{ nvm_install_path }}"
-    version: "v{{ nvm_version }}"
+    version: "{% if nvm_version=='latest' %} master
+              {% elif nvm_version|regex_search('\\d.') %} v{{ nvm_version }}
+              {% else %} {{ nvm_version }}
+              {% endif %}"
     force: "{{ nvm_force_install|bool }}"
-  when: nvm_version | regex_search('\\d.')
+  ignore_errors: "{{ ansible_check_mode }}"
 
-- name: Install nvm latest
-  git:
-    repo: https://github.com/creationix/nvm.git
-    dest: "{{ nvm_install_path }}"
-    version: "{% if nvm_version=='latest' %}master{% else %}{{ nvm_version }}{% endif %}"
-    force: "{{ nvm_force_install|bool }}"
-  when: nvm_version | regex_search('master|HEAD|latest')
-
-- name: Update {{ nvm_shell_init_file }} to source nvm
+- name: Add nvm to {{ nvm_shell_init_file }} file
   blockinfile:
     path: "{{ nvm_shell_init_file }}"
     marker: "# NVM path management from ansible {mark}"

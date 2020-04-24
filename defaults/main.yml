@@ -10,7 +10,7 @@ nvm_node_version: 12.16.1
 
 # path config
 nvm_install_path: ~/.nvm
-nvm_shell_init_file: ~/.profile
+nvm_shell_init_file: ~/.bashrc
 
 # force rewrite nvm folder from remove git
 nvm_force_install: False

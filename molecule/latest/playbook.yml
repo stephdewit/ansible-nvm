@@ -1,0 +1,7 @@
+---
+- name: Latest version install testing
+  hosts: all
+  roles:
+    - role: ansible-nvm
+      nvm_version: latest
+      nvm_node_version: latest

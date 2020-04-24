@@ -1,24 +1,21 @@
 ---
-- name: Install Node.js lts
-  shell: ". ./nvm.sh && nvm install --lts"
-  args:
-    chdir: "{{ nvm_install_path }}"
-  register: nvm_install_result
-  changed_when: "'is already installed.' not in nvm_install_result.stderr"
-  when: nvm_node_version == 'lts'
-
-- name: Install Node.js latest
-  shell: ". ./nvm.sh && nvm install node"
-  args:
-    chdir: "{{ nvm_install_path }}"
-  register: nvm_install_result
-  changed_when: "'is already installed.' not in nvm_install_result.stderr"
-  when: nvm_node_version == 'latest'
-
 - name: Install Node.js {{ nvm_node_version }}
-  shell: ". ./nvm.sh && nvm install {{ nvm_node_version }}"
+  shell: ". ./nvm.sh && nvm install
+    {% if nvm_node_version == 'lts' %} --lts
+    {% elif nvm_node_version == 'latest' %} node
+    {% else %}{{ nvm_node_version }}{% endif %}"
   args:
     chdir: "{{ nvm_install_path }}"
   register: nvm_install_result
   changed_when: "'is already installed.' not in nvm_install_result.stderr"
-  when: nvm_node_version != 'latest' and nvm_node_version != 'lts'
+  ignore_errors: "{{ ansible_check_mode }}"
+
+- name: Set default Node.js version to {{ nvm_node_version }}
+  shell: ". ./nvm.sh && nvm alias default
+    {% if nvm_node_version == 'lts' %} lts
+    {% elif nvm_node_version == 'latest' %} node
+    {% else %}{{ nvm_node_version }}{% endif %}"
+  args:
+    chdir: "{{ nvm_install_path }}"
+  changed_when: False
+  ignore_errors: "{{ ansible_check_mode }}"

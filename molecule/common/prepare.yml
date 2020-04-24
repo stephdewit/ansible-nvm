@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  become_user: root
+  tasks:
+  - name: install python-apt
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+      name: "python-apt"
+    when: ansible_os_family == "Debian"

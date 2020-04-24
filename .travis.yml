@@ -1,43 +1,31 @@
 ---
 language: python
-python: "3.6"
-os: linux
+cache: pip
+python:
+ - "3.7"
+services:
+  - docker
+
+env:
+  global:
+    - ROLE_NAME: ansible-nvm
+  matrix:
+    - MOLECULE_DISTRO: centos7
+    - MOLECULE_DISTRO: centos8
+    - MOLECULE_DISTRO: fedora30
+    - MOLECULE_DISTRO: fedora31
+    - MOLECULE_DISTRO: ubuntu1804
+    - MOLECULE_DISTRO: ubuntu2004
+    - MOLECULE_DISTRO: debian8
+    - MOLECULE_DISTRO: debian9
+
+install:
+  - pip install molecule yamllint ansible-lint docker flake8 testinfra
+
+script:
+  - molecule --version
+  - ansible --version
+  - molecule test --all
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
-
-install:
-  - pip install ansible ansible-lint
-
-# I had to temporary disable this cleanup in 'before_script'
-# as installation doesn't work as expected
-
-#before_script:
-  # Remove already installed nvm
-  #- nvm deactivate
-  #- nvm unload
-  #- rm -rf ~/.nvm
-
-script:
-  # Check syntax
-  - ansible-playbook -i "localhost," test.yml --syntax-check
-  - ansible-lint .
-
-  # First run
-  - ansible-playbook -i "localhost," -c local test.yml --extra-vars "ansible_python_interpreter=auto nvm_install_path=~/.nvmbis"
-
-  # Second run
-  - >
-    ansible-playbook -i "localhost," -c local test.yml --extra-vars "ansible_python_interpreter=auto nvm_install_path=~/.nvmbis"
-    | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
-
-  # Source nvm
-  - . ~/.profile
-
-  # Check nvm version
-  - nvm --version | grep 0.31.5
-
-  # Check Node.js version
-  - node --version | grep 6.9.1
