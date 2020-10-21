@@ -21,6 +21,8 @@
 
 - name: Install Node.js {{ nvm_node_version }}
   shell: . {{ nvm_shell_init_file }} && nvm install {{ nvm_node_version }}
+  args:
+    executable: /bin/bash
   register: nvm_install_result
   changed_when: "'is already installed.' not in nvm_install_result.stderr"
   tags: nvm
@@ -39,5 +41,7 @@
 
 - name: Set default Node.js version to {{ nvm_node_version }}
   shell: . {{ nvm_shell_init_file }} && nvm alias default {{ nvm_node_version }}
+  args:
+    executable: /bin/bash
   when: nvm_check_default.rc != 0
   tags: nvm
