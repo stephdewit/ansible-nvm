@@ -1,6 +1,8 @@
 nvm
 ===
 
+[![Build Status](https://travis-ci.org/stephdewit/ansible-nvm.svg?branch=master)](https://travis-ci.org/stephdewit/ansible-nvm)
+
 Install nvm and Node.js.
 
 Requirements
