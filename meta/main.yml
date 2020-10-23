@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: nvm
   author: Stephane de Wit (based on Jarno Keskikangas work)
   description: Install nvm and Node.js.
   company: stephanedewit.be
