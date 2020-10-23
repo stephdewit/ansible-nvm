@@ -1,0 +1,3 @@
+daysUntilStale: 30
+daysUntilClose: 15
+staleLabel: stale
