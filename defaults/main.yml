@@ -13,4 +13,4 @@ nvm_install_path: ~/.nvm
 nvm_shell_init_file: ~/.profile
 
 # force rewrite nvm folder from remove git
-nvm_force_install: False
+nvm_force_install: false
