@@ -14,3 +14,6 @@ nvm_shell_init_file: ~/.profile
 
 # force rewrite nvm folder from remove git
 nvm_force_install: false
+
+# allow to skip dependencies installation (for non-root user)
+nvm_install_deps: true

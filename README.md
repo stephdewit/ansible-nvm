@@ -18,6 +18,7 @@ Role Variables
 * `nvm_install_path` nvm folder path, support absolute and relative path. Defaults to `~/.nvm`
 * `nvm_shell_init_file` The Shell initialization file to add sourcing of NVM to. Defaults to `~/.profile`
 * `nvm_force_install` **Boolean**. Force reinstall nvm from git, for example if you change some files in `nvm_install_path`. Defaults to `false`
+* `nvm_install_deps` **Boolean**. Allow to skip dependencies setup and therefore run as a non-root user. Defaults to `true`
 
 Dependencies
 ------------

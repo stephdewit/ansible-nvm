@@ -1,10 +1,10 @@
 ---
 - include: setup-redhat.yml
-  when: ansible_os_family == "RedHat"
+  when: ansible_os_family == "RedHat" and nvm_install_deps
   tags: nvm
 
 - include: setup-debian.yml
-  when: ansible_os_family == "Debian"
+  when: ansible_os_family == "Debian" and nvm_install_deps
   tags: nvm
 
 - include: install_nvm.yml
