@@ -15,4 +15,4 @@
   shell: ". ./nvm.sh && nvm alias default {{ nvm_node_version }}"
   args:
     chdir: "{{ nvm_install_path }}"
-  when: nvm_check_default is succeded
+  when: nvm_check_default is succeeded
