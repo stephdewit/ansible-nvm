@@ -1,9 +1,8 @@
 ---
 galaxy_info:
   role_name: nvm
-  author: Stephane de Wit (based on Jarno Keskikangas work)
+  author: Marcos Hernandez (based on Stephane de Wit work)
   description: Install nvm and Node.js.
-  company: stephanedewit.be
   license: BSD
   min_ansible_version: 2.0
   platforms:
@@ -14,6 +13,9 @@ galaxy_info:
       versions:
         - all
     - name: Fedora
+      versions:
+        - all
+    - name: Darwin
       versions:
         - all
   galaxy_tags:
