@@ -1,8 +1,6 @@
 nvm
 ===
 
-[![Build Status](https://travis-ci.org/stephdewit/ansible-nvm.svg?branch=master)](https://travis-ci.org/stephdewit/ansible-nvm)
-
 Install nvm and Node.js.
 
 Requirements
@@ -25,32 +23,49 @@ Dependencies
 
 No dependencies.
 
+Usage
+-----
+
+in requirements.txt
+
+```yaml
+- src: https://bitbucket.org/boats-group/ansible-role-nvm/src/main/
+  svc: git
+  name: boatsgroup.nvm
+```
+
 Example Playbook
 ----------------
 
+```yaml
     - hosts: servers
       roles:
-        - role: stephdewit.nvm
+        - role: boatsgroup.nvm
           nvm_version: 0.4.0
           nvm_node_version: 0.10
+```
 
 Install latest version always
 
+```yaml
     - hosts: servers
       roles:
-        - role: stephdewit.nvm
+        - role: boatsgroup.nvm
           nvm_version: 'latest'
           nvm_node_version: 'latest'
+```
 
 When run with another user than the logged one, it may help to set `NVM_DIR` environment variable to an absolute path:
 
+```yaml
     - hosts: servers
       roles:
-        - role: stephdewit.nvm
+        - role: boatsgroup.nvm
           become: yes
           become_user: vagrant
           environment:
             NVM_DIR: /home/vagrant/.nvm
+```
 
 License
 -------
@@ -60,5 +75,6 @@ BSD
 Author Information
 ------------------
 
+- [Marcos Hernandez](marcos.hernandez@boats.com)
 - Jarno Keskikangas
 - [Stéphane de Wit](https://www.stephanedewit.be)
