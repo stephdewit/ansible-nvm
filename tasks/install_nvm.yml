@@ -15,7 +15,7 @@
     force: "{{ nvm_force_install|bool }}"
   when: nvm_version | regex_search('master|HEAD|latest')
 
-- name: Set permissions
+- name: Set nvm permissions
   file:
     path: "{{ nvm_install_path }}/nvm.sh"
     mode: 0744
