@@ -25,4 +25,4 @@
     path: "{{ nvm_shell_init_file }}"
     marker: "# NVM path management from ansible {mark}"
     block: |
-      . {{ nvm_install_path }}/nvm.sh
+      . {{ nvm_install_path }}/nvm.sh --install

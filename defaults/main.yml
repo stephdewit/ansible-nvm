@@ -10,7 +10,7 @@ nvm_node_version: 14.15.4
 
 # path config
 nvm_install_path: ~/.nvm
-nvm_shell_init_file: ~/.profile
+nvm_shell_init_file: ~/.zshrc
 
 # force rewrite nvm folder from remove git
 nvm_force_install: false
