@@ -17,3 +17,6 @@ nvm_force_install: false
 
 # allow to skip dependencies installation (for non-root user)
 nvm_install_deps: true
+
+# allow to change git url for use proxy
+nvm_git_repository: https://github.com/creationix/nvm.git
