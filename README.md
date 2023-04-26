@@ -1,6 +1,6 @@
 # nvm
 
-[![Ansible Role](https://img.shields.io/ansible/role/15854)](https://galaxy.ansible.com/stephdewit/nvm) [![Ansible Role](https://img.shields.io/ansible/role/d/15854)](https://galaxy.ansible.com/stephdewit/nvm) [![Build Status](https://travis-ci.org/stephdewit/ansible-nvm.svg?branch=master)](https://travis-ci.org/stephdewit/ansible-nvm) ![Ansible Quality Score](https://img.shields.io/ansible/quality/15854)
+[![Ansible Role](https://img.shields.io/ansible/role/15854)](https://galaxy.ansible.com/stephdewit/nvm) [![Ansible Role](https://img.shields.io/ansible/role/d/15854)](https://galaxy.ansible.com/stephdewit/nvm) [![Build Status](https://api.travis-ci.com/repos/stephdewit/ansible-nvm.svg)](https://travis-ci.com/github/stephdewit/ansible-nvm) ![Ansible Quality Score](https://img.shields.io/ansible/quality/15854)
 
 Install nvm and Node.js.
 
