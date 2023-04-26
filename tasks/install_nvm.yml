@@ -1,7 +1,7 @@
 ---
 - name: Install nvm {{ nvm_version }}
   git:
-    repo: https://github.com/creationix/nvm.git
+    repo: "{{ nvm_git_repository }}"
     dest: "{{ nvm_install_path }}"
     version: "v{{ nvm_version }}"
     force: "{{ nvm_force_install|bool }}"
@@ -9,7 +9,7 @@
 
 - name: Install nvm latest
   git:
-    repo: https://github.com/creationix/nvm.git
+    repo: "{{ nvm_git_repository }}"
     dest: "{{ nvm_install_path }}"
     version: "{% if nvm_version=='latest' %}master{% else %}{{ nvm_version }}{% endif %}"
     force: "{{ nvm_force_install|bool }}"
