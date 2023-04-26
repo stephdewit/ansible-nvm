@@ -1,10 +1,10 @@
 ---
-nvm_version: 0.37.2
+nvm_version: 0.39.3
 # nvm_version: 'master'
 # nvm_version: 'latest'
 # nvm_version: 'HEAD'
 
-nvm_node_version: 14.15.4
+nvm_node_version: 18.16.0
 # nvm_node_version: 'lts'
 # nvm_node_version: 'latest'
 

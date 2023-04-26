@@ -10,8 +10,8 @@ git, curl, build-essential, libssl-dev. Requirements are installed by the role.
 
 ## Role Variables
 
-- `nvm_version` nvm version tag, or `HEAD` | `master` | `latest`. Defaults to `0.37.2`
-- `nvm_node_version` Node.js specific version `12.16.0` or use `lts` | `latest`. Defaults to `14.15.4`
+- `nvm_version` nvm version tag, or `HEAD` | `master` | `latest`. Defaults to `0.39.3`
+- `nvm_node_version` Node.js specific version `12.16.0` or use `lts` | `latest`. Defaults to `18.16.0`
 - `nvm_install_path` nvm folder path, support absolute and relative path. Defaults to `~/.nvm`
 - `nvm_shell_init_file` The Shell initialization file to add sourcing of NVM to. Defaults to `~/.profile`
 - `nvm_force_install` **Boolean**. Force reinstall nvm from git, for example if you change some files in `nvm_install_path`. Defaults to `false`
