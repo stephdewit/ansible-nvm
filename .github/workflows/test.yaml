@@ -1,4 +1,4 @@
-name: Test install
+name: Test
 on: push
 jobs:
   test:
