@@ -1,8 +1,8 @@
 name: Test install
 on: push
 jobs:
-  install:
-    name: Install
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,3 +17,7 @@ jobs:
           | grep -q 'changed=0.*failed=0'
           && (echo 'Idempotence test: pass' && exit 0)
           || (echo 'Idempotence test: fail' && exit 1)
+      - name: Check nvm version
+        run: . ~/.profile && nvm --version | grep 0.31.5
+      - name: Check Node.js version
+        run: . ~/.profile && node --version | grep 6.9.1
