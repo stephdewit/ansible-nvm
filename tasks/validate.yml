@@ -15,4 +15,6 @@
   ansible.builtin.shell: ". ./nvm.sh && nvm alias default {{ nvm_node_version }}"
   args:
     chdir: "{{ nvm_install_path }}"
+  register: nvm_set_default
+  changed_when: nvm_set_default.rc == 0
   when: nvm_check_default.rc != 0
