@@ -9,3 +9,5 @@ jobs:
         uses: actions/checkout@v4
       - name: Run linter
         uses: ansible/ansible-lint@v6
+      - name: Syntax Check
+        run: ansible-playbook -i "localhost," test.yml --syntax-check
