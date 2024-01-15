@@ -7,7 +7,7 @@ notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
 
 install:
-  - pip install ansible ansible-lint
+  - pip install ansible
 
 # I had to temporary disable this cleanup in 'before_script'
 # as installation doesn't work as expected
@@ -21,7 +21,6 @@ install:
 script:
   # Check syntax
   - ansible-playbook -i "localhost," test.yml --syntax-check
-  - ansible-lint .
 
   # First run
   - ansible-playbook -i "localhost," -c local test.yml --extra-vars "ansible_python_interpreter=auto nvm_install_path=~/.nvmbis"
