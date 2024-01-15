@@ -1,0 +1,19 @@
+name: Test install
+on: push
+jobs:
+  install:
+    name: Install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Ansible
+        run: pip install ansible
+      - name: First run
+        run: ansible-playbook -i "localhost," -c local test.yml --extra-vars "ansible_python_interpreter=auto nvm_install_path=~/.nvmbis"
+      - name: Second run
+        run: >
+          ansible-playbook -i "localhost," -c local test.yml --extra-vars "ansible_python_interpreter=auto nvm_install_path=~/.nvmbis"
+          | grep -q 'changed=0.*failed=0'
+          && (echo 'Idempotence test: pass' && exit 0)
+          || (echo 'Idempotence test: fail' && exit 1)
