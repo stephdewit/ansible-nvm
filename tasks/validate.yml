@@ -1,5 +1,5 @@
 ---
-- name: Check if {{ nvm_node_version }} is the default Node.js version
+- name: Check if requested version is the default Node.js version
   ansible.builtin.shell: >
     set -o pipefail && \
     . ./nvm.sh && \

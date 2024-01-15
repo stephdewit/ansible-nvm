@@ -15,7 +15,7 @@
     force: "{{ nvm_force_install | bool }}"
   when: nvm_version | regex_search('master|HEAD|latest')
 
-- name: Update {{ nvm_shell_init_file }} to source nvm
+- name: Update ~/.profile to source nvm
   ansible.builtin.blockinfile:
     path: "{{ nvm_shell_init_file }}"
     marker: "# NVM path management from ansible {mark}"
