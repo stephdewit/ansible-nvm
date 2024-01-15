@@ -6,7 +6,7 @@
     name: "{{ packages }}"
   vars:
     packages:
-    - "@Development Tools"
-    - git
-    - curl
-    - openssl-devel
+      - "@Development Tools"
+      - git
+      - curl
+      - openssl-devel

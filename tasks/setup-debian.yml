@@ -8,7 +8,7 @@
     name: "{{ packages }}"
   vars:
     packages:
-    - git
-    - curl
-    - build-essential
-    - libssl-dev
+      - git
+      - curl
+      - build-essential
+      - libssl-dev
