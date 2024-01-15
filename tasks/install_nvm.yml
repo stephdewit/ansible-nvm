@@ -1,6 +1,6 @@
 ---
 - name: Install nvm {{ nvm_version }}
-  git:
+  ansible.builtin.git:
     repo: "{{ nvm_git_repository }}"
     dest: "{{ nvm_install_path }}"
     version: "v{{ nvm_version }}"
@@ -8,7 +8,7 @@
   when: nvm_version | regex_search('\\d.')
 
 - name: Install nvm latest
-  git:
+  ansible.builtin.git:
     repo: "{{ nvm_git_repository }}"
     dest: "{{ nvm_install_path }}"
     version: "{% if nvm_version=='latest' %}master{% else %}{{ nvm_version }}{% endif %}"
@@ -16,7 +16,7 @@
   when: nvm_version | regex_search('master|HEAD|latest')
 
 - name: Update {{ nvm_shell_init_file }} to source nvm
-  blockinfile:
+  ansible.builtin.blockinfile:
     path: "{{ nvm_shell_init_file }}"
     marker: "# NVM path management from ansible {mark}"
     block: |
