@@ -1,17 +1,22 @@
 ---
-- ansible.builtin.import_tasks: setup-redhat.yml
+- name: Import RedHat setup
+  ansible.builtin.import_tasks: setup-redhat.yml
   when: ansible_os_family == "RedHat" and nvm_install_deps
   tags: nvm
 
-- ansible.builtin.import_tasks: setup-debian.yml
+- name: Import Debian setup
+  ansible.builtin.import_tasks: setup-debian.yml
   when: ansible_os_family == "Debian" and nvm_install_deps
   tags: nvm
 
-- ansible.builtin.import_tasks: install_nvm.yml
+- name: Import NVM install
+  ansible.builtin.import_tasks: install_nvm.yml
   tags: nvm
 
-- ansible.builtin.import_tasks: install_nodejs.yml
+- name: Import Node.js install
+  ansible.builtin.import_tasks: install_nodejs.yml
   tags: nvm
 
-- ansible.builtin.import_tasks: validate.yml
+- name: Import validation
+  ansible.builtin.import_tasks: validate.yml
   tags: nvm
