@@ -1,0 +1,13 @@
+name: Publish
+on:
+  release:
+    types: [published]
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Ansible
+        run: pip install ansible
+      - name: Push
+        run: ansible-galaxy role import --token ${{ secrets.GALAXY_API_KEY }} stephdewit ansible-nvm
