@@ -1,6 +1,6 @@
 # nvm
 
-[![Build Status](https://github.com/stephdewit/ansible-nvm/actions/workflows/lint.yaml/badge.svg)](https://github.com/stephdewit/ansible-nvm/actions/workflows/lint.yaml)
+[![Downloads](https://img.shields.io/ansible/role/d/stephdewit/nvm?label=Downloads)](https://galaxy.ansible.com/stephdewit/nvm) [![Linting Status](https://github.com/stephdewit/ansible-nvm/actions/workflows/lint.yaml/badge.svg)](https://github.com/stephdewit/ansible-nvm/actions/workflows/lint.yaml)
 
 Install nvm and Node.js.
 
