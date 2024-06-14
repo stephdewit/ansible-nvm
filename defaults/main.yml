@@ -20,3 +20,6 @@ nvm_install_deps: true
 
 # allow to change git url for use proxy
 nvm_git_repository: https://github.com/creationix/nvm.git
+
+# disable git recursive clone
+nvm_git_recursive: false
