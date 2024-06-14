@@ -1,6 +1,16 @@
-name: Test
+name: Continuous Integration
 on: push
 jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run linter
+        uses: ansible/ansible-lint@v6
+      - name: Syntax Check
+        run: ansible-playbook -i "localhost," test.yml --syntax-check
   test:
     name: Test
     runs-on: ubuntu-latest
