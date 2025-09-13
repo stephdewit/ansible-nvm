@@ -6,7 +6,7 @@
     dest: "{{ nvm_install_path }}"
     version: "v{{ nvm_version }}"
     force: "{{ nvm_force_install | bool }}"
-  when: nvm_version | regex_search('\\d.')
+  when: nvm_version is regex('\\d.')
 
 - name: Install nvm latest
   ansible.builtin.git:
@@ -15,7 +15,7 @@
     dest: "{{ nvm_install_path }}"
     version: "{% if nvm_version == 'latest' %}master{% else %}{{ nvm_version }}{% endif %}"
     force: "{{ nvm_force_install | bool }}"
-  when: nvm_version | regex_search('master|HEAD|latest')
+  when: nvm_version is regex('master|HEAD|latest')
 
 - name: Update ~/.profile to source nvm
   ansible.builtin.blockinfile:
